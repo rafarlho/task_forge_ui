@@ -7,6 +7,8 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
+    "fetch:spec": "curl -k https://localhost:7003/openapi/v1.json -o openapi.json",
+    "generate:api": "npm run fetch:spec && openapi-generator-cli generate -i ./openapi.json --skip-validate-spec -g typescript-fetch -o ./src/api/generated",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run"
